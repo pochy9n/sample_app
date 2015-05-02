@@ -21,8 +21,8 @@
 # see http://j-caw.co.jp/blog/?p=1388
 
 require File.expand_path("../../config/environment", __FILE__)
-#require 'rspec/rails'
-#require 'capybara/rspec'
+# require 'rspec/rails'
+# require 'capybara/rspec'
 require 'capybara/rails'
 
 RSpec.configure do |config|
