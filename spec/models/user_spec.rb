@@ -12,6 +12,7 @@ RSpec.describe User, type: :model do
 	it { should respond_to(:password_digest) }
 	it { should respond_to(:password) }
 	it { should respond_to(:password_confirmation) }
+	it { should respond_to(:remember_token) }
 	it { should respond_to(:authenticate) }
 
 	it { should be_valid }
@@ -82,6 +83,7 @@ RSpec.describe User, type: :model do
 		it "should be saved as all lower-case" do
 			@user.email = mixed_case_email
 			@user.save
+
 			expect(@user.reload.email).to eq mixed_case_email.downcase
 		end
 	end
@@ -117,5 +119,11 @@ RSpec.describe User, type: :model do
 		before { @user.password = @user.password_confirmation = "a" * 5 }
 
 		it { should be_invalid }
+	end
+
+	describe "remember token" do
+		before { @user.save }
+
+		it { expect(@user.remember_token).not_to be_blank }
 	end
 end
